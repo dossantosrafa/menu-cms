@@ -21,7 +21,7 @@ function KanbanColumn({ status, count, disabled, children }: { status: OrderStat
 }
 
 function Ticket({ order, disabled, overlay = false, onStatus }: { order: Order; disabled: boolean; overlay?: boolean; onStatus?: (status: OrderStatus) => void }) {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id: order.id, disabled: disabled || overlay })
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id: overlay ? `overlay-${order.id}` : order.id, disabled: disabled || overlay })
   return <Card ref={setNodeRef} style={transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` } : undefined} className={cn('gap-0 py-0 shadow-xs', isDragging && 'opacity-25', overlay && 'rotate-2 shadow-lg')}>
     <CardContent className="p-4"><div className="flex items-start justify-between gap-2"><div><p className="font-semibold">{order.guestCheck.spot.name}</p><p className="mt-1 text-xs text-muted-foreground">Pedido #{shortId(order.id)}</p></div>
       <button type="button" {...attributes} {...listeners} disabled={disabled || overlay} aria-label={`Arrastar pedido ${shortId(order.id)}`} className="-mt-1 -mr-1 touch-none rounded p-2 text-muted-foreground outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"><GripVertical className="size-4" /></button></div>

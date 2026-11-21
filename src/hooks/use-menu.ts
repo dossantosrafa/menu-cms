@@ -41,18 +41,19 @@ interface CrudService<T> {
 
 function useCrudMutations<T>(service: CrudService<T>, affected: readonly string[], label: string) {
   const client = useQueryClient()
+  const ending = label === 'Produto' ? 'o' : 'a'
   const invalidate = () => Promise.all(affected.map((key) => client.invalidateQueries({ queryKey: [key] })))
   const save = useMutation({
     mutationFn: ({ id, data }: { id?: string; data: T }) => id ? service.update(id, data) : service.create(data),
     onSuccess: async (_, variables) => {
       await invalidate()
-      toast.success(`${label} ${variables.id ? 'atualizado(a)' : 'cadastrado(a)'} com sucesso.`)
+      toast.success(`${label} ${variables.id ? `atualizad${ending}` : `cadastrad${ending}`} com sucesso.`)
     },
     onError: (error) => toast.error(getErrorMessage(error)),
   })
   const remove = useMutation({
     mutationFn: service.remove,
-    onSuccess: async () => { await invalidate(); toast.success(`${label} excluído(a) com sucesso.`) },
+    onSuccess: async () => { await invalidate(); toast.success(`${label} excluíd${ending} com sucesso.`) },
     onError: (error) => toast.error(getErrorMessage(error)),
   })
   return { save, remove }

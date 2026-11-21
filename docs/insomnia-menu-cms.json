@@ -1,0 +1,511 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-11-21T23:00:14.016886+00:00",
+  "__export_source": "menu-cms",
+  "resources": [
+    {
+      "_id": "wrk_menu_cms",
+      "_type": "workspace",
+      "name": "Menu CMS — validação da API",
+      "description": "Rotas reais do backend NestJS. Preencha os IDs com respostas da sua API.",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_menu_cms",
+      "_type": "environment",
+      "parentId": "wrk_menu_cms",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3000",
+        "category_id": "",
+        "product_id": "",
+        "spot_id": "",
+        "guest_check_id": "",
+        "order_id": ""
+      },
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false
+    },
+    {
+      "_id": "req_menu_2",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "01 · Listar categorias",
+      "method": "GET",
+      "url": "{{ _.base_url }}/categories",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_3",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "02 · Criar categoria",
+      "method": "POST",
+      "url": "{{ _.base_url }}/categories",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Categoria para demonstração\",\n  \"icon\": null,\n  \"displayOrder\": 1,\n  \"active\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_4",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "03 · Editar categoria",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/categories/{{ _.category_id }}",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Categoria revisada\",\n  \"icon\": null,\n  \"displayOrder\": 2,\n  \"active\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_5",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "04 · Excluir categoria sem produtos",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/categories/{{ _.category_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_6",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "05 · Listar todos os produtos administrativos",
+      "method": "GET",
+      "url": "{{ _.base_url }}/products?includeInactive=true",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_7",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "06 · Filtrar produtos por categoria",
+      "method": "GET",
+      "url": "{{ _.base_url }}/products?includeInactive=true&categoryId={{ _.category_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_8",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "07 · Criar produto",
+      "method": "POST",
+      "url": "{{ _.base_url }}/products",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Produto para demonstração\",\n  \"description\": \"Descrição do produto\",\n  \"price\": 19.9,\n  \"picture\": null,\n  \"categoryId\": \"{{ _.category_id }}\",\n  \"active\": true,\n  \"isVegetarian\": false,\n  \"isNew\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_9",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "08 · Editar produto",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/products/{{ _.product_id }}",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"price\": 22.5,\n  \"isVegetarian\": true,\n  \"isNew\": false\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_10",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "09 · Excluir produto sem pedidos",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/products/{{ _.product_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_11",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "10 · Listar mesas",
+      "method": "GET",
+      "url": "{{ _.base_url }}/spots",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_12",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "11 · Criar mesa",
+      "method": "POST",
+      "url": "{{ _.base_url }}/spots",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Mesa de demonstração\",\n  \"active\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_13",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "12 · Editar mesa",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/spots/{{ _.spot_id }}",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Mesa revisada\",\n  \"active\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_14",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "13 · Excluir mesa sem comanda",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/spots/{{ _.spot_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_15",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "14 · Listar comandas abertas",
+      "method": "GET",
+      "url": "{{ _.base_url }}/guest-checks?status=OPENED",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_16",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "15 · Detalhar comanda",
+      "method": "GET",
+      "url": "{{ _.base_url }}/guest-checks/{{ _.guest_check_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_17",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "16 · Listar pedidos",
+      "method": "GET",
+      "url": "{{ _.base_url }}/orders",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_18",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "17 · Listar pedidos da comanda",
+      "method": "GET",
+      "url": "{{ _.base_url }}/orders?guestCheckId={{ _.guest_check_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_19",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "18 · Criar pedido da mesa",
+      "method": "POST",
+      "url": "{{ _.base_url }}/orders",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"spotId\": \"{{ _.spot_id }}\",\n  \"items\": [\n    {\n      \"productId\": \"{{ _.product_id }}\",\n      \"quantity\": 2\n    }\n  ]\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_20",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "19 · Detalhar pedido",
+      "method": "GET",
+      "url": "{{ _.base_url }}/orders/{{ _.order_id }}",
+      "body": {},
+      "headers": [],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_21",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "20 · Alterar status para NEW",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/orders/{{ _.order_id }}/status",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"NEW\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_22",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "20 · Alterar status para PREPARING",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/orders/{{ _.order_id }}/status",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"PREPARING\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_23",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "20 · Alterar status para READY",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/orders/{{ _.order_id }}/status",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"READY\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    },
+    {
+      "_id": "req_menu_24",
+      "_type": "request",
+      "parentId": "wrk_menu_cms",
+      "name": "20 · Alterar status para DELIVERED",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/orders/{{ _.order_id }}/status",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"DELIVERED\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "authentication": {},
+      "description": "Use IDs reais. As gravações alteram o banco configurado no backend.",
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingSendCookies": true,
+      "settingStoreCookies": true
+    }
+  ]
+}

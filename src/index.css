@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
+@theme inline {
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #eaf1ed;
+  --color-secondary-foreground: #193d2d;
+  --color-muted: #f0f3f1;
+  --color-muted-foreground: #64716b;
+  --color-accent: #edf5f0;
+  --color-accent-foreground: #193d2d;
+  --color-destructive: #b91c1c;
+  --color-border: #dfe7e2;
+  --color-input: #cfdad3;
+  --color-ring: #286047;
+  --radius-sm: .375rem;
+  --radius-md: .5rem;
+  --radius-lg: .75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --background: #f6f8f7;
+  --foreground: #172b22;
+  --card: #ffffff;
+  --primary: #193d2d;
+  --radius: .75rem;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply m-0 min-w-80 bg-background font-sans text-base text-foreground antialiased; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]) { cursor: pointer; }
+  ::selection { background: #cce5d7; color: #123021; }
+}

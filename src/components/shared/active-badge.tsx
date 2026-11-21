@@ -1,0 +1,5 @@
+import { Badge } from '@/components/ui/badge'
+
+export function ActiveBadge({ active }: { active: boolean }) {
+  return <Badge variant="outline" className={active ? 'border-emerald-200 bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-600'}>{active ? 'Ativa' : 'Inativa'}</Badge>
+}
